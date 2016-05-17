@@ -92,7 +92,7 @@ def register():
                 return redirect(redirect_url)
 
             except StormpathError as err:
-                flash(err.message.get('message'))
+                flash(err.get('message'))
 
     return render_template(
         current_app.config['STORMPATH_REGISTRATION_TEMPLATE'],
@@ -130,7 +130,7 @@ def login():
             return redirect(request.args.get('next') or current_app.config['STORMPATH_REDIRECT_URL'])
 
         except StormpathError as err:
-            flash(err.message.get('message'))
+            flash(err.get('message'))
 
     return render_template(
         current_app.config['STORMPATH_LOGIN_TEMPLATE'],
